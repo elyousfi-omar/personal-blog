@@ -1,0 +1,66 @@
+<%- include('./partials/head.ejs') %>
+
+<section class="container-xl my-5">
+    <p class="text-break">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat aspernatur quaerat natus sint numquam ex nihil tempore voluptatum eos dolorum odit, deleniti veniam cupiditate repudiandae soluta est possimus impedit doloribus explicabo! Qui eos repellat cum saepe doloremque sunt, reprehenderit eligendi repellendus, autem ipsa assumenda ea fuga facilis unde nobis ad in. Hic, ipsam adipisci dicta esse facilis laudantium! Omnis incidunt ut molestias quia temporibus optio facilis commodi modi nisi eum nostrum exercitationem eaque fugit ea ipsam libero, tenetur doloremque enim? Deleniti hic corrupti quae impedit enim, consequatur illo cum velit, esse laudantium inventore nisi ut ipsum reiciendis maiores, optio eaque!
+    </p>
+</section>
+
+<section class="container-xl">
+
+<% if (blogs.length > 0){ %>
+    <% blogs.forEach(blog => { %>
+    <div class="row align-items-center border-start border-warning border-4 my-2">
+        <div class="col-10">
+
+    <a href="/blogs/<%= blog._id %>" class="text-decoration-none display-6 text-dark"><h2> <%= blog.title %> </h2></a>  
+        <p class="fs-6 lead"> Written in <%= blog.createdAt.toLocaleDateString('en-GB') %></p>
+
+        </div>
+        <div class="col-2 ">
+            <a href="/blogs/<%= blog._id %>" class="btn btn-success rounded-pill">
+                <span class="bi bi-arrows-angle-expand fs-4"></span>
+            </a>
+            <a href="" data-blog="<%= blog._id %>" class="btn btn-danger rounded-pill delete">
+            <span class="bi bi-trash fs-4"></span>
+            </a>
+
+        </div>
+    </div>
+
+    <% }) %>
+
+<% }else{ %>
+    <p>There are no blogs yet...</p>
+<% } %>
+
+<%- include('./partials/footer.ejs') %>
+
+<!-- offcanvas -->
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Contact me!</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form action="">
+            <label for="email" class="form-label">Email:</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                <input id="email" type="email" class="form-control" placeholder="e.g.omar@gmail.com">
+            </div>
+
+            <label for="name" class="form-label">Name:</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                <input id="name" type="text" class="form-control" placeholder="Omar">
+            </div>
+            <div class="form-floating my-4">
+                <textarea id="textArea" type="text" class="form-control" style="height: 150px;" placeholder="Query"></textarea>
+                <label for="textArea" class="form-label">Query:</label>
+            </div>
+        </form>
+    </div>
+  </div>
+</section>

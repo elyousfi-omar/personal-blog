@@ -1,0 +1,29 @@
+<%- include('./partials/head.ejs') %>
+<div class="container-xl">
+    <!-- Title -->
+    <div class="row my-4 border-bottom align-items-center" style="background-image: linear-gradient(to right, white, rgb(241, 241, 241));">
+        <div class="col-10">
+            <h1><%= blog.title %></h1>
+            <p class="fs-6 lead"> Written in <%= blog.createdAt.toLocaleDateString('en-GB') %></p>
+
+        </div>
+        <div class="col-2">
+        <a href="" data-blog="<%= blog._id %>" class="btn btn-danger rounded-pill delete">
+            <span class="bi bi-trash fs-4"></span>
+        </a>
+        </div>
+    </div>
+    <!-- Body -->
+    <div class="row my-6 border-start border-4 border-warning">
+
+        <div class="col text-break ">
+            <%= blog.body %>
+        </div>
+        
+    </div>
+
+</div>
+
+
+
+<%- include('./partials/footer.ejs') %>
