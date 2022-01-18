@@ -1,0 +1,8 @@
+<%- include('./partials/head.ejs') %>
+    <form action="/courses" method="POST">
+        <label for="note" class="col-form-label">Starting noting:</label>
+        <input type="text" id="course" name="course" class="form-control" placeholder="Course..." required>
+        
+        <button type="submit" class="btn btn-success">Submit</button>  
+    </form>
+<%- include('./partials/footer.ejs') %>

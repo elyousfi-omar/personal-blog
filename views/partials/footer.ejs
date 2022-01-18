@@ -10,6 +10,50 @@
             .catch(err =>console.log(err));
     })
 </script>
+<script>
+    const toDelete_n = document.querySelector('a.delete_n');
+    toDelete_n.addEventListener('click', (e)=>{
+        const endpoint = `/blogs/notes/${toDelete_n.dataset.nt}`;
+        fetch(endpoint, {
+            method: 'DELETE'
+        })
+            .then((res)=> res.json())
+            .then((data) => window.location.href = data.redirect)
+            .catch(err =>console.log(err));
+    })
+</script>
+<script>
+    const toDelete_p = document.querySelector('a.delete_pr');
+    toDelete_p.addEventListener('click', (e)=>{
+        const endpoint = `/blogs/projects/${toDelete_p.dataset.pr}`;
+        fetch(endpoint, {
+            method: 'DELETE'
+        })
+            .then((res)=> res.json())
+            .then((data) => window.location.href = data.redirect)
+            .catch(err =>console.log(err));
+    })
+</script>
+<script>
+    const toDelete_c = document.querySelector('a.delete_c');
+    toDelete_c.addEventListener('click', (e)=>{
+        const endpoint = `/blogs/projects/${toDelete_c.dataset.c}`;
+        fetch(endpoint, {
+            method: 'DELETE'
+        })
+            .then((res)=> res.json())
+            .then((data) => window.location.href = data.redirect)
+            .catch(err =>console.log(err));
+    })
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script>
+    new Calendar({
+    id: '#color-calendar',
+})
+</script>
+
+<!--https://www.cssscript.com/event-calendar-color/-->
 </body>
 </html>

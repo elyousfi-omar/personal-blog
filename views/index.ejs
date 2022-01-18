@@ -1,9 +1,102 @@
 <%- include('./partials/head.ejs') %>
 
 <section class="container-xl my-5">
-    <p class="text-break">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat aspernatur quaerat natus sint numquam ex nihil tempore voluptatum eos dolorum odit, deleniti veniam cupiditate repudiandae soluta est possimus impedit doloribus explicabo! Qui eos repellat cum saepe doloremque sunt, reprehenderit eligendi repellendus, autem ipsa assumenda ea fuga facilis unde nobis ad in. Hic, ipsam adipisci dicta esse facilis laudantium! Omnis incidunt ut molestias quia temporibus optio facilis commodi modi nisi eum nostrum exercitationem eaque fugit ea ipsam libero, tenetur doloremque enim? Deleniti hic corrupti quae impedit enim, consequatur illo cum velit, esse laudantium inventore nisi ut ipsum reiciendis maiores, optio eaque!
-    </p>
+    <div class="row">
+        <div class="col-6">
+
+            <div class="accordion" id="calendar">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="calendarHeader">
+                        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#calendarBody" aria-expanded="true" aria-controls="calendarBody">Calendar</button>
+                    </h2>
+                    <div id="calendarBody" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#calendar">
+                        <div class="accordion-body">
+                            <div class="d-flex justify-content-center" id="color-calendar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion" id="notes">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="notesHeader">
+                        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#notesBody" aria-expanded="true" aria-controls="notesBody">Notes</button>
+                    </h2>
+                    <div id="notesBody" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#notes">
+                        <div class="accordion-body">
+                            <div style="float:right">
+                            <a href="/blogs/create_note" class="btn btn-warning rounded-pill"><i class="bi bi-plus-circle"></i></a>
+                            </div>
+                            <% if (notes.length > 0){ %>
+                                <% notes.forEach(note => { %>
+                                    <span class="badge rounded-pill bg-primary">
+                                        <%= note.note %>
+                                        <a href="" data-nt="<%= note._id %>" class="delete_n">
+                                            <i class="bi bi-x-lg text-dark"></i>
+                                        </a>
+                                    </span>
+                                <% }) %>
+                            
+                            <% }else{ %>
+                                <p>There are no notes yet...</p>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-6">
+            
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Projects</button>
+                  <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Courses</button>
+                </div>
+              </nav>
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div style="float:right">
+                        <a href="/blogs/create_proj" class="btn btn-info rounded-pill my-5"><i class="bi bi-plus-circle"></i></a>
+                    </div>
+                    <% if (proj.length > 0){ %>
+                        <% proj.forEach(p => { %>
+                            <% colors = ["warning", "primary"] %>
+                            <span class="my-5 mx-2 badge rounded-pill bg-<%= colors[0] %>">
+                                <%= p.project %>
+                                <a href="" data-pr="<%= p._id %>" class="delete_pr">
+                                    <i class="bi bi-x-lg text-dark"></i>
+                                </a>
+                            </span>
+                        <% }) %>
+                    
+                    <% }else{ %>
+                        <p>There are no projects yet...</p>
+                    <% } %>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div style="float:right">
+                        <a href="/blogs/create_course" class="btn btn-secondary rounded-pill my-5"><i class="bi bi-plus-circle"></i></a>
+                    </div>
+                    <% if (cou.length > 0){ %>
+                        <% cou.forEach(c => { %>
+                            <span class="my-5 badge rounded-pill bg-success">
+                                <%= c.course %>
+                                <a href="" data-c="<%= c._id %>" class="delete_c">
+                                    <i class="bi bi-x-lg text-dark"></i>
+                                </a>
+                            </span>
+                        <% }) %>
+                    
+                    <% }else{ %>
+                        <p>There are no courses yet...</p>
+                    <% } %>
+                </div>
+
+              </div>
+
+        </div>
+    </div>
 </section>
 
 <section class="container-xl">
@@ -34,33 +127,7 @@
     <p>There are no blogs yet...</p>
 <% } %>
 
-<%- include('./partials/footer.ejs') %>
-
-<!-- offcanvas -->
-
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Contact me!</h5>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <form action="">
-            <label for="email" class="form-label">Email:</label>
-            <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
-                <input id="email" type="email" class="form-control" placeholder="e.g.omar@gmail.com">
-            </div>
-
-            <label for="name" class="form-label">Name:</label>
-            <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                <input id="name" type="text" class="form-control" placeholder="Omar">
-            </div>
-            <div class="form-floating my-4">
-                <textarea id="textArea" type="text" class="form-control" style="height: 150px;" placeholder="Query"></textarea>
-                <label for="textArea" class="form-label">Query:</label>
-            </div>
-        </form>
-    </div>
-  </div>
 </section>
+
+
+<%- include('./partials/footer.ejs') %>

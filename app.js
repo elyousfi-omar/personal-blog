@@ -10,7 +10,8 @@ const { findById } = require('./models/blog');
 const app = express();
 
 // Connection to MongoDB
-const dbURI = "mongodb+srv://admin:admin@myblog.wfuob.mongodb.net/myBlogDB?retryWrites=true&w=majority"
+//const dbURI = past your mongodb database URI here.
+
 mongoose.connect(dbURI).then((result) => app.listen(3000))
     .catch((err) => console.log(err));
 
