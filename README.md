@@ -16,7 +16,10 @@ This web application offers following features:
 ## Interface:
 I developped front end using Bootstrap 5. 
 Main page:
-![main_page](https://github.com/elyousfi-omar/personal-blog/1.png?raw=true)
+![main_page](https://github.com/elyousfi-omar/personal-blog/blob/main/2.PNG?raw=true)
+Writing a blog:
+![blog](https://github.com/elyousfi-omar/personal-blog/blob/main/2.PNG?raw=true)
+
 ## Technologies:
 The application is created using:
 - Javascript
