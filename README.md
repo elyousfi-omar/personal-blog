@@ -8,6 +8,10 @@ This web application offers following features:
 - Noting projects and courses to do(or done).
 - A calendar.
 
+## Note: 
+To use the application, do not forget to configure database. In my case I used Atlas MongoDB, if you want to do the same, do not forget to add Mongo URI in app.js as dbURI variable. Example:  
+const dbURI = "mongodb+srv://<user>:<password>@xxxxxxxxxxxxxxxxxxx"
+
 ## To do:
 - Add a planner.
 - A side TODO list.
@@ -27,3 +31,5 @@ The application is created using:
 - Express
 - Bootstrap
 - MongoDB
+  
+ ❗❗contact me @ elyousfiomarr@gmail.com
